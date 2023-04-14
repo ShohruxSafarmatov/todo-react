@@ -1,0 +1,62 @@
+.todo__list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+
+
+.todo__item {
+    width: 600px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 20px;
+
+
+}
+
+.completed {
+    opacity: 0.6;
+    transform: scale(0.9);
+}
+
+.todo__item-text {
+    padding: 20px;
+    font-family: sans-serif;
+    font-size: 21px;
+}
+
+.active {
+    text-decoration: line-through;
+}
+
+.todo__item-box {
+    display: flex;
+    align-items: center;
+}
+
+.todo__completed-btn {
+    width: 65px;
+    height: 65px;
+    background-color: #4464AD;
+}
+
+.bx-check {
+    font-size: 30px;
+    color: #fff;
+}
+
+.todo__remove-btn {
+    width: 65px;
+    height: 65px;
+    background-color: #4A156E;
+
+}
+
+.bxs-trash-alt {
+    font-size: 25px;
+    color: #fff;
+}
