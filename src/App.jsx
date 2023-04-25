@@ -4,14 +4,13 @@ import List from "./Components/List/List";
 import "./App.css";
 
 function App() {
+
+
+  
   const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
-
-
-
-
 
   const filterHandler = () => {
     switch (status) {
@@ -21,19 +20,18 @@ function App() {
       case "uncompleted":
         setFilteredTodos(todos.filter((item) => item.completed === false));
         break;
-
       default:
         setFilteredTodos(todos);
         break;
     }
   };
 
-  const setLocalTodo = () => {
+  const setLocalTodo = (todos) => {
     localStorage.setItem("todos", JSON.stringify(todos));
   };
 
   const getLocalTodo = () => {
-    if (localStorage.getItem("todos") === null) {
+    if (localStorage.getItem("todos") === []) {
       localStorage.setItem("todos", JSON.stringify([]));
     } else {
       let localTodo = JSON.parse(localStorage.getItem("todos"));
@@ -47,7 +45,7 @@ function App() {
 
   useEffect(() => {
     filterHandler();
-    setLocalTodo();
+    setLocalTodo(todos);
   }, [status, todos]);
 
   return (
