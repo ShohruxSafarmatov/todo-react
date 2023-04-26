@@ -4,11 +4,8 @@ import List from "./Components/List/List";
 import "./App.css";
 
 function App() {
-
-
-  
   const [inputValue, setInputValue] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")));
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
 
@@ -26,27 +23,10 @@ function App() {
     }
   };
 
-  const setLocalTodo = (todos) => {
+  useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
-  };
-
-  const getLocalTodo = () => {
-    if (localStorage.getItem("todos") === []) {
-      localStorage.setItem("todos", JSON.stringify([]));
-    } else {
-      let localTodo = JSON.parse(localStorage.getItem("todos"));
-      setTodos(localTodo);
-    }
-  };
-
-  useEffect(() => {
-    getLocalTodo();
-  }, []);
-
-  useEffect(() => {
     filterHandler();
-    setLocalTodo(todos);
-  }, [status, todos]);
+  }, [todos, status]);
 
   return (
     <div className="App">
